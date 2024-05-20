@@ -8,11 +8,11 @@ const Talk = () => {
   return (
     <div>
       <div>
-      <h1 className='font-bold text-black text-3xl text-center pt-10 pb-5'>Talk to Astrologer About</h1>
-        <p className='text-black text-base text-center px-80 pb-5'>Astrologer is here to provide solutions for all your astrological needs. We offer a variety of services ranging
+      <h1 className='font-bold text-black text-3xl md:text-center pt-10 px-10 pb-5'>Talk to Astrologer About</h1>
+        <p className='text-black text-base md:text-center md:px-80 px-10 pb-5'>Astrologer is here to provide solutions for all your astrological needs. We offer a variety of services ranging
 from horoscopes, astrology consultation, numerology to tarot card reading.  </p>
       </div>
-      <div className='flex gap-14 px-28 '>
+      <div className='md:flex gap-14 md:px-28 px-2 space-y-5 md:space-y-0 pt-10 '>
       <Card 
           title='Talk & Chat' 
           description='Astrologer talk to you for solving your
@@ -33,7 +33,7 @@ from horoscopes, astrology consultation, numerology to tarot card reading.  </p>
 
       </div>
 
-      <div className='flex gap-14 px-28  pt-10'>
+      <div className='md:flex gap-14 md:px-28 px-2 space-y-5 md:space-y-0 pt-10'>
           <Card 
           title='Talk & Chat' 
           description='Astrologer talk to you for solving your
