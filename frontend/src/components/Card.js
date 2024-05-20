@@ -3,8 +3,8 @@ import arrow from "../assets/arrow-left.png"
 
 const Card = ({ imgSrc, title, description }) => {
   return (
-    <div className='bg-white shadow-2xl w-96 text-center items-center h-72 px-10 py-10'>
-      <div className='px-28'>
+    <div className='bg-white shadow-2xl   text-center items-center h-72  sm:px-4 sm:py-5 sm:mb-5   lg:px-3 lg:py-3'>
+      <div className='flex justify-center'>
         <img src={imgSrc} width={80} height={80} alt={title} />
       </div>
       <div>
