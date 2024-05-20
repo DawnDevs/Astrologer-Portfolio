@@ -7,14 +7,14 @@ import call from '../assets/call.png'
 const Services = () => {
   return (
     <div className=''>
-        <h1 className='font-bold text-black text-3xl text-center pt-10 pb-5'>Our Services</h1>
-        <p className='text-black text-base text-center px-80 pb-5'>Astrologer is here to provide solutions for all your astrological needs. We offer a variety of services ranging
+        <h1 className='font-bold text-black md:text-3xl text-center md:pt-10 md:pb-5'>Our Services</h1>
+        <p className='text-black text-base text-center md:px-32  lg:px-80 md:pb-5'>Astrologer is here to provide solutions for all your astrological needs. We offer a variety of services ranging
 from horoscopes, astrology consultation, numerology to tarot card reading. </p>
-        <div className='flex gap-14 px-28 '>
+        <div className='md:grid md:grid-cols-2  lg:flex lg:gap-14 lg:px-28 '>
           <Card 
           title='Talk & Chat' 
           description='Astrologer talk to you for solving your
-          problems by online way.' 
+          problems by online way.'  
           imgSrc={call} />
 
         <Card 
@@ -30,7 +30,7 @@ from horoscopes, astrology consultation, numerology to tarot card reading. </p>
           imgSrc={id} />
         </div>
 
-        <div className='flex gap-14 px-28  pt-10'>
+        <div className='lg:flex lg:gap-14 lg:px-28  lg:pt-10'>
           <Card 
           title='Talk & Chat' 
           description='Astrologer talk to you for solving your
