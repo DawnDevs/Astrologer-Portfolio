@@ -6,6 +6,7 @@ import Services from '../components/Services'
 import Planet from '../components/Planet'
 import Talk from '../components/Talk'
 import TestimonialSection from '../components/Testamonial'
+import Footer from '../components/Footer'
 
 
 const Home = () => {
@@ -18,6 +19,7 @@ const Home = () => {
         <Planet />
         <Talk />
         <TestimonialSection />
+        <Footer />
       
     </div>
   )
