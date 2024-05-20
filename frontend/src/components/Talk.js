@@ -1,8 +1,8 @@
 import React from 'react'
 import Card from './Card'
 import lemon from '../assets/lemon.png'
-import id from '../assets/id.png'
 import call from '../assets/call.png'
+import id from '../assets/id.png'
 
 const Talk = () => {
   return (

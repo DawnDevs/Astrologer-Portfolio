@@ -1,5 +1,8 @@
 import React from 'react'
-import Talk from './Talk'
+import Card from './Card'
+import lemon from '../assets/lemon.png'
+import call from '../assets/call.png'
+import id from '../assets/id.png'
 
 const Booking = () => {
   return (
@@ -13,7 +16,46 @@ const Booking = () => {
 from horoscopes, astrology consultation, numerology to tarot card reading. </p>
             </div>
             <div>
-                <Talk />
+            <div className='md:flex gap-14 md:px-28 px-2 space-y-5 md:space-y-0 pt-10 '>
+      <Card 
+          title='Talk & Chat' 
+          description='Astrologer talk to you for solving your
+          problems by online way.' 
+          imgSrc={call} />
+
+        <Card 
+          title='Numerology' 
+          description='Most of the numerology predictions are 
+          based on your number.' 
+          imgSrc={lemon} />
+
+        <Card 
+          title='Tarot' 
+          description='Tarot reading is a powerful form of 
+          divination that use an ancient check.' 
+          imgSrc={id} />
+
+      </div>
+
+      <div className='md:flex gap-14 md:px-28 px-2 space-y-5 md:space-y-0 pt-10'>
+          <Card 
+          title='Talk & Chat' 
+          description='Astrologer talk to you for solving your
+          problems by online way.' 
+          imgSrc={call} />
+
+        <Card 
+          title='Numerology' 
+          description='Most of the numerology predictions are 
+          based on your number.' 
+          imgSrc={lemon} />
+
+        <Card 
+          title='Tarot' 
+          description='Tarot reading is a powerful form of 
+          divination that use an ancient check.' 
+          imgSrc={id} />
+        </div>
             </div>
         </div>
     </div>
