@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import line from '../assets/Line.png';
 import customer from '../assets/customer1.png';
 import double from "../assets/double.png";
@@ -20,6 +20,14 @@ const testimonials = [
 
 const TestimonialSection = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTestimonial((prevTestimonial) => (prevTestimonial + 1) % testimonials.length);
+    }, 5000); // Change testimonial every 5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div>
