@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import '../styles/CustomDatePicker.css'
 import { format } from 'date-fns';
 
 const initialAvailableSlots = {
