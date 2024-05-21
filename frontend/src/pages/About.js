@@ -6,7 +6,11 @@ import Star from "../assets/flower.png";
 import JourneyFrame from "../components/JourneyFrame";
 import FAQ from "../components/FAQ";
 import FAQImg from "../assets/faq.png";
-import Avatar from '../assets/avatar.png'
+import Footer from '../components/Footer'
+import Slider from "../components/Slider";
+import Leo from '../assets/icons/leo.png'
+import Taurus from '../assets/icons/taurus.png'
+
 
 const About = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,11 +22,11 @@ const About = () => {
   return (
     <div className=" reddit-sans">
       <Navbar />
-      <div className=" pt-10 mx-6 md:mx-14 lg:mx-32">
-        <div className=" flex justify-center">
+      <div className=" pt-10 ">
+        <div className=" flex justify-center mx-6 md:mx-14 lg:mx-32">
           <p className="font-semibold text-3xl underline-text">ABOUT</p>
         </div>
-        <div className=" pt-12 md:gap-12 lg:gap-20 items-center md:flex ">
+        <div className=" pt-12 md:gap-12 lg:gap-20 items-center mx-6 md:mx-14 lg:mx-32 md:flex ">
           <div className=" flex justify-center w-auto md:w-[100%] lg:w-[50%] ">
             <img className=" h-52 md:h-72 lg:h-96" src={AboutPic}></img>
           </div>
@@ -46,7 +50,8 @@ const About = () => {
             </p>
           </div>
         </div>
-        <div className=" flex justify-center gap-4 md:gap-10 lg:gap-20 pt-6 animate-pulse">
+        
+        <div className=" flex justify-center gap-4 mx-6 md:mx-14 lg:mx-32 md:gap-10 lg:gap-20 pt-6 animate-pulse">
           <div className="md:flex gap-10 lg:gap-20">
             <a className=" flex items-center hover:cursor-pointer hover:underline">
               <svg
@@ -134,7 +139,11 @@ const About = () => {
           </div>
         </div>
 
-        <div className=" pt-10 md:pt-16 md:flex justify-between">
+        <div className=" mt-10 shadow-md bg-orange-200" >
+          <Slider />
+        </div>
+
+        <div className=" pt-10 md:pt-16 mx-6 md:mx-14 lg:mx-32 md:flex justify-between">
           <div className=" w-full md:w-[40%]">
             <p className=" orange-text-bold font-semibold text-3xl">
               OUR VISION
@@ -167,8 +176,9 @@ const About = () => {
           </div>
         </div>
 
-        <div className="">
+        <div className=" mx-6 md:mx-14 lg:mx-32">
           <img className=" absolute left-0 h-44" src={Star}></img>
+          <img className=" absolute right-0 h-44" src={Leo}></img>
           <div className=" pt-10">
             <p className=" flex justify-center orange-text-bold font-semibold text-3xl">
               JOURNEY
@@ -180,11 +190,12 @@ const About = () => {
             </p>
             <div className=" pt-10">
               <JourneyFrame />
+              <img className=" absolute left-0 h-44" src={Taurus}></img>
             </div>
           </div>
         </div>
 
-        <div className=" pt-16">
+        <div className=" mx-6 md:mx-14 lg:mx-32 pt-16">
           <p className=" flex justify-center font-semibold text-3xl">
             Frequently asked Questions
           </p>
@@ -197,6 +208,9 @@ const About = () => {
             <FAQ />
           </div>
         </div>
+      </div>
+      <div>
+        <Footer />
       </div>
     </div>
   );
