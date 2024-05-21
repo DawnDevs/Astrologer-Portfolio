@@ -8,6 +8,9 @@
     font-family: "Reddit Sans";
 }
 
+.quicksand-font {
+    font-family: "Quicksand"
+}
 /* Underline styling */
 .underline-text {
     /* position: relative; */
@@ -31,3 +34,22 @@
 .orange-text-bold {
     color: #FF8A00;
 }
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 10%;
+    z-index: 1;
+  }
+  
+  .overlay-left {
+    left: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+  }
+  
+  .overlay-right {
+    right: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+  }
+  
