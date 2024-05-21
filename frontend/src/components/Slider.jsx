@@ -64,7 +64,7 @@ const Slider = () => {
       </Marquee>
 
       <Marquee className='overflow-x-hidden' style={{zIndex:0}} direction="left">
-        <div className="flex space-x-16 mr-16 h-24">
+        <div className="flex space-x-16 mr-16">
           <div className="h-14 md:h-20 w-14 md:w-20">
             <img className="" src={Aries} alt="Aries" />
           </div>
