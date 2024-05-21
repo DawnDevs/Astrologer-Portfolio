@@ -20,7 +20,7 @@ const About = () => {
   };
 
   return (
-    <div className=" reddit-sans">
+    <div className=" quicksand-font">
       <Navbar />
       <div className=" pt-10 ">
         <div className=" flex justify-center mx-6 md:mx-14 lg:mx-32">
