@@ -3,8 +3,8 @@ import React from 'react'
 
 const PlanetCard = ({ imgSrc, title, description, imgWidth, imgHeight }) => {
   return (
-    <div className='relative top-[50%] mb-14'>
-      <div className=' sm:pl-20 md:pl-40 lg:pl-60 absolute top-[-30%]'>
+    <div className='relative top-[50%] mb-20 px-5'>
+      <div className=' sm:pl-20 md:pl-40 lg:pl-60 absolute top-[-20%] sm:top-[-30%]'>
         <img
           src={imgSrc}
           style={{ width: imgWidth, height: imgHeight }}

@@ -7,10 +7,10 @@ import id from '../assets/id.png'
 const Talk = () => {
   return (
     <div className=''>
-        <h1 className='font-bold text-black sm:text-3xl text-center sm:pb-5 md:pt-10 md:pb-5'>Talk to Astrologer About</h1>
-        <p className='text-black text-base text-center md:px-32 sm:pb-10  lg:px-80 md:pb-10'>Astrologer is here to provide solutions for all your astrological needs. We offer a variety of services ranging
+        <h1 className='font-bold text-black pb-3 sm:text-3xl text-center sm:pb-5 md:pt-10 md:pb-5'>Talk to Astrologer About</h1>
+        <p className='text-black text-base pb-7 text-center md:px-32 sm:pb-10  lg:px-80 md:pb-10'>Astrologer is here to provide solutions for all your astrological needs. We offer a variety of services ranging
 from horoscopes, astrology consultation, numerology to tarot card reading. </p>
-        <div className='sm:block md:grid md:grid-cols-2  lg:grid lg:grid-cols-3 sm:px-40    md:px-10 md:gap-10 lg:gap-12 lg:px-5 '>
+        <div className=' px-10 sm:block md:grid md:grid-cols-2  lg:grid lg:grid-cols-3 sm:px-40    md:px-10 md:gap-10 lg:gap-12 lg:px-5 '>
           <Card 
           title='Talk & Chat' 
           description='Astrologer talk to you for solving your

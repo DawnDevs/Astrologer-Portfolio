@@ -8,7 +8,7 @@ const LandingPage = () => {
   return (
     <div>
       <main className="pt-16 xl:mb-4 lg:mb-10 xl:pb-5 md:flex justify-between md:pl-10 md:pr-7 lg:pl-16 lg:pr-10 md:items-center md:my-4">
-        <div className="md:flex-1 md:mr-10 px-10">
+        <div className="md:flex-1 md:mr-10 px-10 ">
           <h1 className="text-xl md:text-3xl lg:text-4xl font-semibold mb-2 md:mb-4">
             Got Any Questions?
           </h1>
@@ -21,7 +21,7 @@ const LandingPage = () => {
           <h1 className='text-xl md:text-2xl lg:text-4xl font-bold mb-2 md:mb-4'>
             YOUR FIRST SESSION.
           </h1>
-          <button className="bg-black text-white mt-8 px-4 py-2 text-sm lg:px-8 lg:py-4 rounded-lg hover:bg-gray-700">
+          <button className="bg-black text-white mt-8 px-4 mb-5 py-2 text-sm lg:px-8 lg:py-4 rounded-lg hover:bg-gray-700">
             CONNECT
           </button>   
         </div>

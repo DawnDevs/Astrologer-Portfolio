@@ -10,8 +10,8 @@ const Card = ({ imgSrc, title, description }) => {
   });
 
   return (
-    <div className='bg-white shadow-2xl text-center items-center h-72 sm:px-4 sm:py-5 sm:mb-5 lg:px-3 lg:py-3'>
-      <div className='flex justify-center' ref={ref}>
+    <div className='mb-10 bg-white shadow-2xl text-center items-center h-72 sm:px-4 sm:py-5 sm:mb-5 lg:px-3 lg:py-3'>
+      <div className='flex justify-center pt-5' ref={ref}>
         <motion.img
           src={imgSrc}
           width={80}

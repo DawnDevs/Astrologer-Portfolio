@@ -38,11 +38,11 @@ const TestimonialSection = () => {
         </div>
       </div>
 
-      <div className='grid grid-cols-3 sm:gap-10 sm:items-center sm:px-5 md:px-10 lg:px-16 mb-10'>
+      <div className='grid grid-cols-3 px-5 sm:gap-10 items-center  sm:items-center sm:px-5 md:px-10 lg:px-16 mb-10'>
         <div className='lg:pl-24 md:pl-5'>
           <img src={testimonials[currentTestimonial].image} width={250} height={250} alt="Customer" />
         </div>
-        <div className='bg-orange-500 col-span-2 rounded-2xl'>
+        <div className='bg-orange-500 p-2 col-span-2 rounded-2xl'>
           <div className='p-3'>
             <img src={double} width={50} height={50} alt="Double Quotes" />
           </div>
