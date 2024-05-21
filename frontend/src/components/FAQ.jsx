@@ -10,11 +10,11 @@ const FaqItem = ({ question, answer, bgColor }) => {
 
   return (
     <div
-      className={` mb-4 p-4 rounded-md shadow-sm`}
-      style={{ backgroundColor: "#FFF9F5" }}
+      className={` mb-4 p-4 px-8 rounded-md shadow-sm`}
+      style={{ backgroundColor: "#FFB02E" }}
     >
       <div className="flex justify-between items-center">
-        <p className="cursor-pointer text-2xl font-medium" onClick={toggleAnswer}>
+        <p className="cursor-pointer text-xl md:text-2xl font-semibold" onClick={toggleAnswer}>
           {question}
         </p>
         <svg
@@ -23,7 +23,7 @@ const FaqItem = ({ question, answer, bgColor }) => {
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          className={`dropdown-icon w-6 md:w-8 h-6 md:h-8 cursor-pointer ${
+          className={`dropdown-icon w-6 md:w-8 h-6 md:h-8 transition-transform duration-700 cursor-pointer ${
             isOpen && "rotate-180"
           }`}
           onClick={toggleAnswer}
@@ -43,25 +43,25 @@ const FaqItem = ({ question, answer, bgColor }) => {
 const FAQ = () => {
   const faqs = [
     {
-      question: "What is Lorem Ipsum?",
+      question: "What is Astrology?",
       answer:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
       bgColor: "pink",
     },
     {
-      question: "Why do we use it?",
+      question: "What are the key principles of Astrology?",
       answer:
         "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
       bgColor: "blue",
     },
     {
-      question: "Where does it come from?",
+      question: "How can I book a slot?",
       answer:
         "Contrary to popular belief, Lorem Ipsum is not simply random text.",
       bgColor: "green",
     },
     {
-      question: "Where can I get some?",
+      question: "Where are you located?",
       answer: "There are many variations of passages of Lorem Ipsum available.",
       bgColor: "yellow",
     },
@@ -74,7 +74,7 @@ const FAQ = () => {
   ];
 
   return (
-    <div className="w-[60%] py-8">
+    <div className=" w-full md:w-[60%] py-8">
       {faqs.map((faq, index) => (
         <FaqItem
           key={index}
