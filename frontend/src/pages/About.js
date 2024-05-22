@@ -32,9 +32,9 @@ const About = () => {
           </div>
           <div className=" md:w-[100%]">
             <div className=" flex">
-              <p className=" flex justify-center orange-text text-2xl md:text-3xl lg:text-6xl font-semibold">
-                Your Star Determines <br className=" hidden lg:flex" /> Your
-                Life's Journey
+              <p className=" flex justify-center bg-orange-200 p-2 px-4 rounded text-black text-2xl md:text-3xl lg:text-6xl font-semibold">
+                ✯ Your Star Determines <br className=" hidden lg:flex" /> Your
+                Life's Journey ✯ 
               </p>
               <img
                 className=" lg:h-44 hidden lg:flex absolute right-0"
@@ -178,7 +178,7 @@ const About = () => {
 
         <div className=" mx-6 md:mx-14 lg:mx-32">
           <img className=" absolute left-0 h-44" src={Star}></img>
-          <img className=" absolute right-0 h-44" src={Leo}></img>
+          <img className=" absolute right-0 animate-pulse opacity-75 h-32 md:h-44" src={Leo}></img>
           <div className=" pt-10">
             <p className=" flex justify-center orange-text-bold font-semibold text-3xl">
               JOURNEY
@@ -190,7 +190,7 @@ const About = () => {
             </p>
             <div className=" pt-10">
               <JourneyFrame />
-              <img className=" absolute left-0 h-44" src={Taurus}></img>
+              <img className=" absolute right-0 animate-pulse opacity-75 md:left-0 h-44" src={Taurus}></img>
             </div>
           </div>
         </div>

@@ -13,7 +13,7 @@ const FaqItem = ({ question, answer, bgColor }) => {
       className={` mb-4 p-4 px-8 rounded-md shadow-sm`}
       style={{ backgroundColor: "#FFB02E" }}
     >
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between gap-4 md:gap-0 items-center">
         <p className="cursor-pointer text-xl md:text-2xl font-semibold" onClick={toggleAnswer}>
           {question}
         </p>
