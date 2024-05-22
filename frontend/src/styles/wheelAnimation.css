@@ -1,0 +1,15 @@
+/* src/styles/wheelAnimation.css */
+
+@keyframes rotateWheel {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .wheel-animation {
+    animation: rotateWheel 30s linear infinite; /* Change duration and timing function as needed */
+  }
+  

@@ -6,17 +6,15 @@ import id from '../assets/id.png'
 
 const Talk = () => {
   return (
-    <div>
-      <div>
-      <h1 className='font-bold text-black text-3xl md:text-center pt-10 px-10 pb-5'>Talk to Astrologer About</h1>
-        <p className='text-black text-base md:text-center md:px-80 px-10 pb-5'>Astrologer is here to provide solutions for all your astrological needs. We offer a variety of services ranging
-from horoscopes, astrology consultation, numerology to tarot card reading.  </p>
-      </div>
-      <div className='md:flex gap-14 md:px-28 px-2 space-y-5 md:space-y-0 pt-10 '>
-      <Card 
+    <div className=''>
+        <h1 className='font-bold text-black pb-3 sm:text-3xl text-center sm:pb-5 md:pt-10 md:pb-5'>Talk to Astrologer About</h1>
+        <p className='text-black text-base pb-7 text-center md:px-32 sm:pb-10  lg:px-80 md:pb-10'>Astrologer is here to provide solutions for all your astrological needs. We offer a variety of services ranging
+from horoscopes, astrology consultation, numerology to tarot card reading. </p>
+        <div className=' px-10 sm:block md:grid md:grid-cols-2  lg:grid lg:grid-cols-3 sm:px-40    md:px-10 md:gap-10 lg:gap-12 lg:px-5 '>
+          <Card 
           title='Talk & Chat' 
           description='Astrologer talk to you for solving your
-          problems by online way.' 
+          problems by online way.'  
           imgSrc={call} />
 
         <Card 
@@ -30,10 +28,9 @@ from horoscopes, astrology consultation, numerology to tarot card reading.  </p>
           description='Tarot reading is a powerful form of 
           divination that use an ancient check.' 
           imgSrc={id} />
+       
 
-      </div>
-
-      <div className='md:flex gap-14 md:px-28 px-2 space-y-5 md:space-y-0 pt-10'>
+        
           <Card 
           title='Talk & Chat' 
           description='Astrologer talk to you for solving your
@@ -52,6 +49,7 @@ from horoscopes, astrology consultation, numerology to tarot card reading.  </p>
           divination that use an ancient check.' 
           imgSrc={id} />
         </div>
+        
     </div>
   )
 }

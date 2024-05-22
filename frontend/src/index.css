@@ -2,3 +2,54 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.reddit-sans {
+    font-family: "Reddit Sans";
+}
+
+.quicksand-font {
+    font-family: "Quicksand"
+}
+/* Underline styling */
+.underline-text {
+    /* position: relative; */
+    display: inline-block;
+  }
+  
+  .underline-text::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: #FFB02E; /* Change this to the desired underline color */
+    /* position: absolute; */
+    bottom: -8px; /* Adjust this value for padding between text and underline */
+    /* left: 0; */
+}
+
+.orange-text {
+    color: #FFB02E;
+}
+.orange-text-bold {
+    color: #FF8A00;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 10%;
+    z-index: 1;
+  }
+  
+  .overlay-left {
+    left: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+  }
+  
+  .overlay-right {
+    right: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+  }
+  
