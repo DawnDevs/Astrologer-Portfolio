@@ -6,11 +6,11 @@ import Star from "../assets/flower.png";
 import JourneyFrame from "../components/JourneyFrame";
 import FAQ from "../components/FAQ";
 import FAQImg from "../assets/faq.png";
-import Footer from '../components/Footer'
+import Footer from "../components/Footer";
 import Slider from "../components/Slider";
-import Leo from '../assets/icons/leo.png'
-import Taurus from '../assets/icons/taurus.png'
-
+import Leo from "../assets/icons/leo.png";
+import Taurus from "../assets/icons/taurus.png";
+import Slider2 from "../components/Slider2";
 
 const About = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,7 +34,7 @@ const About = () => {
             <div className=" flex">
               <p className=" flex justify-center bg-orange-200 p-2 px-4 rounded text-black text-2xl md:text-3xl lg:text-6xl font-semibold">
                 ✯ Your Star Determines <br className=" hidden lg:flex" /> Your
-                Life's Journey ✯ 
+                Life's Journey ✯
               </p>
               <img
                 className=" lg:h-44 hidden lg:flex absolute right-0"
@@ -50,7 +50,7 @@ const About = () => {
             </p>
           </div>
         </div>
-        
+
         <div className=" flex justify-center gap-4 mx-6 md:mx-14 lg:mx-32 md:gap-10 lg:gap-20 pt-6 animate-pulse">
           <div className="md:flex gap-10 lg:gap-20">
             <a className=" flex items-center hover:cursor-pointer hover:underline">
@@ -68,9 +68,7 @@ const About = () => {
                   d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"
                 />
               </svg>
-              <p className=" text-sm lg:text-xl font-medium">
-                +91 9876543210
-              </p>
+              <p className=" text-sm lg:text-xl font-medium">+91 9876543210</p>
             </a>
             <a className=" flex items-center hover:cursor-pointer hover:underline">
               <svg
@@ -108,9 +106,7 @@ const About = () => {
                   clip-rule="evenodd"
                 />
               </svg>
-              <p className=" text-sm lg:text-xl font-medium">
-                astronomica.in
-              </p>
+              <p className=" text-sm lg:text-xl font-medium">astronomica.in</p>
             </a>
             <a className=" flex items-center hover:cursor-pointer hover:underline">
               <svg
@@ -139,7 +135,7 @@ const About = () => {
           </div>
         </div>
 
-        <div className=" mt-10 shadow-md bg-orange-200" >
+        <div className=" mt-10 shadow-md bg-orange-200">
           <Slider />
         </div>
 
@@ -178,7 +174,10 @@ const About = () => {
 
         <div className=" mx-6 md:mx-14 lg:mx-32">
           <img className=" absolute left-0 h-44" src={Star}></img>
-          <img className=" absolute right-0 animate-pulse opacity-75 h-32 md:h-44" src={Leo}></img>
+          <img
+            className=" absolute right-0 animate-pulse opacity-75 h-32 md:h-44"
+            src={Leo}
+          ></img>
           <div className=" pt-10">
             <p className=" flex justify-center orange-text-bold font-semibold text-3xl">
               JOURNEY
@@ -190,7 +189,10 @@ const About = () => {
             </p>
             <div className=" pt-10">
               <JourneyFrame />
-              <img className=" absolute right-0 animate-pulse opacity-75 md:left-0 h-44" src={Taurus}></img>
+              <img
+                className=" absolute right-0 animate-pulse opacity-75 md:left-0 h-44"
+                src={Taurus}
+              ></img>
             </div>
           </div>
         </div>
@@ -208,6 +210,9 @@ const About = () => {
             <FAQ />
           </div>
         </div>
+      </div>
+      <div className="shadow-md bg-orange-300">
+        <Slider2 />
       </div>
       <div>
         <Footer />
