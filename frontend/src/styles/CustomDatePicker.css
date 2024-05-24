@@ -21,11 +21,11 @@
   }
   
   .react-datepicker__day:hover {
-    background-color: #e6f7ff;
+    background-color: #FFB02E;
   }
   
   .react-datepicker__day--today {
     font-weight: bold;
-    color: #fbfbfb;
+    color: #000000;
   }
   
