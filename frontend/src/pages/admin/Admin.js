@@ -41,8 +41,8 @@ const Admin = () => {
                     <label>Mode:</label>
                     <select value={mode} onChange={(e) => setMode(e.target.value)} required>
                         <option value="" disabled>Select mode</option>
-                        <option value="online">Online</option>
-                        <option value="offline">Offline</option>
+                        <option value="Online">Online</option>
+                        <option value="Offline">Offline</option>
                     </select>
             </div>
                 <button type="submit">Add Slot</button>
