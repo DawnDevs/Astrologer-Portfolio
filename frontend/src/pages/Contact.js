@@ -11,7 +11,7 @@ const Contact = () => {
       <Navbar />
       <div className='md:flex justify-between md:mx-40 mx-10'>
       <Calendar />
-      <ContactForm />
+      {/* <ContactForm /> */}
       </div>
       <Booking />
       <Footer />

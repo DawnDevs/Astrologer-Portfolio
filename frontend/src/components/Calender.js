@@ -1,52 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import '../styles/CustomDatePicker.css'
 import { format } from 'date-fns';
-
-const initialAvailableSlots = {
-  '2024-05-20': ['10:00 AM', '2:00 PM', '4:00 PM'],
-  '2024-05-21': ['9:00 AM', '11:00 AM', '3:00 PM'],
-  '2024-05-22': ['9:00 AM', '11:00 AM', '3:00 PM'],
-};
+import axios from 'axios';
 
 const Calendar = () => {
   const [selectedDate, setSelectedDate] = useState(null);
-  const [availableSlots, setAvailableSlots] = useState(initialAvailableSlots);
   const [slots, setSlots] = useState([]);
-  const [bookedSlots, setBookedSlots] = useState({});
+
+  useEffect(() => {
+    if (selectedDate) {
+      fetchSlots(selectedDate);
+    }
+  }, [selectedDate]);
+
+  useEffect(() => {
+    console.log(slots); // Log slots whenever it changes
+  }, [slots]);
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
-    const dateString = format(date, 'yyyy-MM-dd');
-    const slotTimes = availableSlots[dateString] || [];
-    setSlots(slotTimes);
   };
 
-  const handleSlotClick = (slot) => {
-    const dateString = format(selectedDate, 'yyyy-MM-dd');
-
-    // Mark slot as booked
-    setBookedSlots((prevBookedSlots) => {
-      const updatedSlots = { ...prevBookedSlots };
-      if (!updatedSlots[dateString]) {
-        updatedSlots[dateString] = [];
-      }
-      updatedSlots[dateString].push(slot);
-      return updatedSlots;
-    });
-
-    // Remove slot from available slots
-    setAvailableSlots((prevAvailableSlots) => {
-      const updatedSlots = { ...prevAvailableSlots };
-      updatedSlots[dateString] = updatedSlots[dateString].filter((s) => s !== slot);
-      return updatedSlots;
-    });
+  const fetchSlots = async (selectedDate) => {
+    try {
+      const year = selectedDate.getFullYear();
+      const month = String(selectedDate.getMonth() + 1).padStart(2, '0');
+      const day = String(selectedDate.getDate()).padStart(2, '0');
+      const formattedDate = `${year}-${month}-${day}`;
+      console.log(formattedDate);
+      const response = await axios.get(`http://localhost:5000/api/slots?date=${formattedDate}`);
+      setSlots(response.data);
+    } catch (error) {
+      console.error('Error fetching slots:', error);
+    }
   };
 
-  const isSlotBooked = (date, slot) => {
-    const dateString = format(date, 'yyyy-MM-dd');
-    return bookedSlots[dateString]?.includes(slot);
+  const handleBookSlot = (slot) => {
+    const queryParams = new URLSearchParams({
+      date: format(selectedDate, 'yyyy-MM-dd'),
+      time: slot.time,
+      mode: slot.mode,
+    }).toString();
+    window.open(`/contactform?${queryParams}`, '_blank');
   };
 
   return (
@@ -60,29 +56,36 @@ const Calendar = () => {
           inline
           className="border-2 border-orange-500 rounded-lg"
         />
-      </div>
-      {slots.length > 0 && (
-        <div className="mt-6 w-full max-w-4xl">
-          <h3 className="text-2xl font-semibold mb-4">Available Slots</h3>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            {slots.map((slot, index) => (
-              <li key={index} className="flex justify-center">
-                <button
-                  onClick={() => handleSlotClick(slot)}
-                  disabled={isSlotBooked(selectedDate, slot)}
-                  className={`w-full py-3 rounded-lg text-white ${
-                    isSlotBooked(selectedDate, slot)
-                      ? 'bg-gray-400 cursor-not-allowed'
-                      : 'bg-blue-500 hover:bg-blue-700 cursor-pointer'
-                  }`}
-                >
-                  {slot} {isSlotBooked(selectedDate, slot) && '(Booked)'}
-                </button>
-              </li>
-            ))}
-          </ul>
+        <div>
+          {selectedDate && format(selectedDate, 'dd-MM-yyyy')}
         </div>
-      )}
+      </div>
+
+      <div className="mt-6 w-full max-w-4xl">
+        <h3 className="text-2xl font-semibold mb-4">Available Slots</h3>
+        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          {slots.map((slot, index) => (
+            <li key={index} className="bg-white p-4 shadow rounded-lg">
+              <div>Time: {slot.time}</div>
+              <div>Mode: {slot.mode}</div>
+              <div>
+                {slot.isBooked ? (
+                  <button className="bg-gray-400 text-white py-2 px-4 rounded cursor-not-allowed" disabled>
+                    Booked
+                  </button>
+                ) : (
+                  <button
+                    className="bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-700"
+                    onClick={() => handleBookSlot(slot)}
+                  >
+                    Book Now
+                  </button>
+                )}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

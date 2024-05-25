@@ -13,7 +13,7 @@ const Booking = () => {
             </div>
             <div>
                 <p className='md:text-center px-10 my-3 font-normal text-gray-600'>Astrologer is here to provide solutions for all your astrological needs. We offer a variety of services ranging <br/>
-from horoscopes, astrology consultation, numerology to tarot card reading. </p>
+                from horoscopes, astrology consultation, numerology to tarot card reading. </p>
             </div>
             <div>
             <div className='md:flex gap-14 md:px-28 px-2 space-y-5 md:space-y-0 pt-10 '>
