@@ -1,9 +1,8 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 const Admin = () => {
-
-    const [date, setDate] = useState('');
+  const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [mode, setMode] = useState('');
 
@@ -22,34 +21,56 @@ const Admin = () => {
   };
 
   return (
-    <div>
-        <div>
-            Admin
+    <div className="min-h-screen flex items-center justify-center bg-amber-500">
+      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+        <div className="text-center mb-6">
+          <h1 className="text-2xl font-semibold text-gray-700">Admin</h1>
         </div>
-        <div>
-            <form onSubmit={handleSubmit}>
-                <h2>Add Slot</h2>
-                <div>
-                    <label>Date:</label>
-                    <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required />
-                </div>
-                <div>
-                    <label>Time:</label>
-                    <input type="time" value={time} onChange={(e) => setTime(e.target.value)} required />
-                </div>
-                <div>
-                    <label>Mode:</label>
-                    <select value={mode} onChange={(e) => setMode(e.target.value)} required>
-                        <option value="" disabled>Select mode</option>
-                        <option value="Online">Online</option>
-                        <option value="Offline">Offline</option>
-                    </select>
-            </div>
-                <button type="submit">Add Slot</button>
-            </form>
-        </div>
+        <form onSubmit={handleSubmit}>
+          <h2 className="text-xl font-semibold text-gray-600 mb-4">Add Slot</h2>
+          <div className="mb-4">
+            <label className="block text-gray-600 mb-1">Date:</label>
+            <input
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              required
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-amber-500"
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-600 mb-1">Time:</label>
+            <input
+              type="time"
+              value={time}
+              onChange={(e) => setTime(e.target.value)}
+              required
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-amber-500"
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-600 mb-1">Mode:</label>
+            <select
+              value={mode}
+              onChange={(e) => setMode(e.target.value)}
+              required
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-amber-500"
+            >
+              <option value="" disabled>Select mode</option>
+              <option value="Online">Online</option>
+              <option value="Offline">Offline</option>
+            </select>
+          </div>
+          <button
+            type="submit"
+            className="w-full bg-orange-500 text-white py-2 rounded-md hover:bg-orange-600 transition duration-300"
+          >
+            Add Slot
+          </button>
+        </form>
+      </div>
     </div>
-  )
+  );
 }
 
-export default Admin
+export default Admin;

@@ -7,18 +7,22 @@ import Admin from './pages/admin/Admin';
 import ContactForm from './components/Contactform';
 
 
+
 function App() {
+
+  const isLoggedIn = window.localStorage.getItem('authenticated')
+
   return (
     <div>
     
          <Router>
-            <Routes>
-              <Route path="/" element={<Home />} />
+            <Routes>                                             
+              <Route path="/" element={<Home />} />                    
               <Route path="/contact" element={<Contact />} />
               <Route path="/about" element={<About />} />
-              <Route path='/admin' element={<Login />} />
-              <Route path='/adminpage' element={<Admin />} />
-              <Route path='/contactform' element={<ContactForm />} />
+              <Route path='/login'  element={isLoggedIn === 'true'? <Admin />:<Login />} />
+              <Route path='/adminpage' element={isLoggedIn === 'true'? <Admin />:<Login />} />
+              <Route path='/contactform' element={isLoggedIn === 'true'? <ContactForm />:<Login />} />
               
             </Routes>
           </Router>

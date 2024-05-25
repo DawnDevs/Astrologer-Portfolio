@@ -5,12 +5,14 @@ const cors = require('cors');
 const bcrypt = require('bcrypt');
 require('dotenv').config();
 
+const port = process.env.PORT || 5000;
+
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
 mongoose
-  .connect(process.env.MONGODB)
+  .connect(process.env.MONGODB, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log("Connected to MongoDB");
   })
@@ -19,7 +21,7 @@ mongoose
   });
 
 const userSchema = new mongoose.Schema({
-  admin: String,
+  username: String,
   password: String
 });
 const User = mongoose.model('User', userSchema);
@@ -50,7 +52,6 @@ const FormSubmission = mongoose.model('FormSubmission', formSubmissionSchema);
 app.post('/api/submit-form', async (req, res) => {
   const { email, name, phone, date, time, mode } = req.body;
   try {
-    // Save the form data in the database
     const newFormSubmission = new FormSubmission({
       email,
       name,
@@ -61,7 +62,6 @@ app.post('/api/submit-form', async (req, res) => {
     });
     await newFormSubmission.save();
 
-    // Mark the slot as booked
     await Slot.updateOne({ date, time, mode }, { isBooked: true });
 
     res.status(201).json({ message: 'Form submitted and slot booked successfully' });
@@ -72,11 +72,11 @@ app.post('/api/submit-form', async (req, res) => {
 });
 
 app.post('/api/register', async (req, res) => {
-  const { admin, password } = req.body;
+  const { username, password } = req.body;
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new User({
-      admin,
+      username,
       password: hashedPassword
     });
     await newUser.save();
@@ -88,13 +88,13 @@ app.post('/api/register', async (req, res) => {
 });
 
 app.post('/api/login', async (req, res) => {
-  const { admin, password } = req.body;
+  const { username, password } = req.body;
   try {
-    const user = await User.findOne({admin});
+    const user = await User.findOne({ username });
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
-    const isPasswordValid = bcrypt.compare(password, user.password);
+    const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
       return res.status(401).json({ message: 'Invalid password' });
     }
@@ -134,6 +134,6 @@ app.get('/api/slots', async (req, res) => {
   }
 });
 
-app.listen(5000, () => {
-  console.log('Server is running on port 5000');
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
