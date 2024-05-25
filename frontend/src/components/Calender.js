@@ -35,7 +35,16 @@ const Calendar = () => {
       console.error('Error fetching slots:', error);
     }
   };
-  
+
+  const handleBookSlot = (slot) => {
+    const queryParams = new URLSearchParams({
+      date: format(selectedDate, 'yyyy-MM-dd'),
+      time: slot.time,
+      mode: slot.mode,
+    }).toString();
+    window.open(`/contactform?${queryParams}`, '_blank');
+  };
+
   return (
     <div className="p-6 bg-gray-100 flex flex-col items-center my-10">
       <h2 className="text-3xl font-bold mb-6 text-orange-500">Select a Date</h2>
@@ -59,6 +68,20 @@ const Calendar = () => {
             <li key={index} className="bg-white p-4 shadow rounded-lg">
               <div>Time: {slot.time}</div>
               <div>Mode: {slot.mode}</div>
+              <div>
+                {slot.isBooked ? (
+                  <button className="bg-gray-400 text-white py-2 px-4 rounded cursor-not-allowed" disabled>
+                    Booked
+                  </button>
+                ) : (
+                  <button
+                    className="bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-700"
+                    onClick={() => handleBookSlot(slot)}
+                  >
+                    Book Now
+                  </button>
+                )}
+              </div>
             </li>
           ))}
         </ul>
