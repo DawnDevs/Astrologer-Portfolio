@@ -9,7 +9,7 @@ const port = process.env.PORT || 5000;
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors("https://astrologer-portfolio.vercel.app/"));
 
 mongoose
   .connect(process.env.MONGODB, { useNewUrlParser: true, useUnifiedTopology: true })

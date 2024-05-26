@@ -28,7 +28,6 @@ from horoscopes, astrology consultation, numerology to tarot card reading. </p>
           description='Tarot reading is a powerful form of 
           divination that use an ancient check.' 
           imgSrc={id} />
-       
 
         
           <Card 
