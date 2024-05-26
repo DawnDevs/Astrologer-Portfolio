@@ -45,7 +45,7 @@ const Thankyou = () => {
           </svg>
         </div>
         {/* Animated SVGs */}
-        <a href='/' className=''><button className='bg-amber-500 px-2 py-1 rounded-lg text-xl font-semibold'>Continue</button></a>
+       
       </div>
     </div>
   );
