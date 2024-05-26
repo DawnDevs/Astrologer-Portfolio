@@ -3,7 +3,10 @@ import React, { useState } from 'react';
 
 const Admin = () => {
   const [date, setDate] = useState('');
-  const [time, setTime] = useState('');
+
+  const [starttime, setStartTime] = useState(''); // Update variable names to match backend schema
+  const [endtime, setEndTime] = useState(''); // Update variable names to match backend schema
+
   const [mode, setMode] = useState('');
 
   const handleSubmit = async (e) => {
@@ -11,20 +14,21 @@ const Admin = () => {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.post('http://localhost:5000/api/slots', 
-        { date, time, mode },
+        { date, starttime, endtime, mode },
         { headers: { Authorization: `Bearer ${token}` } }
       );
       alert(response.data.message);
     } catch (error) {
-      alert('Error adding slot');
+      alert('Slot already exists');
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-amber-500">
-      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-        <div className="text-center mb-6">
-          <h1 className="text-2xl font-semibold text-gray-700">Admin</h1>
+
+    <div>
+        <div>
+            Admin
+
         </div>
         <form onSubmit={handleSubmit}>
           <h2 className="text-xl font-semibold text-gray-600 mb-4">Add Slot</h2>
@@ -39,11 +43,23 @@ const Admin = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-600 mb-1">Time:</label>
+
+            <label className="block text-gray-600 mb-1">Start Time:</label>
             <input
               type="time"
-              value={time}
-              onChange={(e) => setTime(e.target.value)}
+              value={starttime} // Update variable name to match backend schema
+              onChange={(e) => setStartTime(e.target.value)}
+              required
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-amber-500"
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-600 mb-1">End Time:</label>
+            <input
+              type="time"
+              value={endtime} // Update variable name to match backend schema
+              onChange={(e) => setEndTime(e.target.value)}
+
               required
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-amber-500"
             />
@@ -69,8 +85,9 @@ const Admin = () => {
           </button>
         </form>
       </div>
-    </div>
-  );
+
+  )
+
 }
 
 export default Admin;

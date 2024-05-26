@@ -28,7 +28,8 @@ const User = mongoose.model('User', userSchema);
 
 const slotSchema = new mongoose.Schema({
   date: Date,
-  time: String,
+  starttime: String,  // Ensure field name matches
+  endtime: String,    // Ensure field name matches
   mode: String,
   isBooked: {
     type: Boolean,
@@ -38,38 +39,6 @@ const slotSchema = new mongoose.Schema({
 
 const Slot = mongoose.model('Slot', slotSchema);
 
-const formSubmissionSchema = new mongoose.Schema({
-  email: String,
-  name: String,
-  phone: String,
-  date: Date,
-  time: String,
-  mode: String,
-});
-
-const FormSubmission = mongoose.model('FormSubmission', formSubmissionSchema);
-
-app.post('/api/submit-form', async (req, res) => {
-  const { email, name, phone, date, time, mode } = req.body;
-  try {
-    const newFormSubmission = new FormSubmission({
-      email,
-      name,
-      phone,
-      date,
-      time,
-      mode
-    });
-    await newFormSubmission.save();
-
-    await Slot.updateOne({ date, time, mode }, { isBooked: true });
-
-    res.status(201).json({ message: 'Form submitted and slot booked successfully' });
-  } catch (error) {
-    console.error('Error submitting form:', error);
-    res.status(500).json({ message: 'Server error' });
-  }
-});
 
 app.post('/api/register', async (req, res) => {
   const { username, password } = req.body;
@@ -107,14 +76,24 @@ app.post('/api/login', async (req, res) => {
 });
 
 app.post('/api/slots', async (req, res) => {
-  const { date, time, mode } = req.body;
+  const { date, starttime, endtime, mode } = req.body;
 
   try {
+    // Check if a slot already exists for the given date and time
+    const existingSlot = await Slot.findOne({ date, starttime, endtime, mode });
+
+    if (existingSlot) {
+      return res.status(400).json({ message: 'Slot already exists for the given date and time' });
+    }
+
+    // Create a new slot if no existing slot is found
     const newSlot = new Slot({
       date,
-      time,
+      starttime, 
+      endtime,
       mode
     });
+
     await newSlot.save();
     res.status(201).json({ message: 'Slot added successfully' });
   } catch (error) {
@@ -133,6 +112,32 @@ app.get('/api/slots', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
+
+
+app.put('/api/slots/book/:slotId', async (req, res) => {
+  const { slotId } = req.params;
+
+  try {
+    const slot = await Slot.findById(slotId);
+
+    if (!slot) {
+      return res.status(404).json({ message: 'Slot not found' });
+    }
+
+    if (slot.isBooked) {
+      return res.status(400).json({ message: 'Slot is already booked' });
+    }
+
+    slot.isBooked = true;
+    const updatedSlot = await slot.save();
+
+    res.status(200).json({ message: 'Slot booked successfully', slot: updatedSlot });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
