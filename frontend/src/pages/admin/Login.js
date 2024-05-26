@@ -17,6 +17,7 @@ const Login = () => {
 
     try {
       const response = await fetch("https://astrologer-portfolio.vercel.app/api/login", {
+        mode: 'no-cors',
         method: "POST",
         headers: {
           "Content-Type": "application/json",
