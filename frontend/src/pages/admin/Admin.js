@@ -13,7 +13,7 @@ const Admin = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.post('https://astrologer-portfolio-server.vercel.app/api/slots', 
+      const response = await axios.post('https://astrologer-portfolio.vercel.app/api/slots', 
         { date, starttime, endtime, mode },
         { headers: { Authorization: `Bearer ${token}` } }
       );
