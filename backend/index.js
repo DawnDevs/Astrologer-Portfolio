@@ -9,10 +9,10 @@ const port = process.env.PORT || 5000;
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors("https://astrologer-portfolio-client.vercel.app/"));
+app.use(cors({origin:"https://astrologer-portfolio-client.vercel.app/"}));
 
 mongoose
-  .connect(process.env.MONGODB, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(process.env.MONGODB)
   .then(() => {
     console.log("Connected to MongoDB");
   })
@@ -28,8 +28,8 @@ const User = mongoose.model('User', userSchema);
 
 const slotSchema = new mongoose.Schema({
   date: Date,
-  starttime: String,  // Ensure field name matches
-  endtime: String,    // Ensure field name matches
+  starttime: String,
+  endtime: String,  
   mode: String,
   isBooked: {
     type: Boolean,
@@ -39,8 +39,8 @@ const slotSchema = new mongoose.Schema({
 
 const Slot = mongoose.model('Slot', slotSchema);
 
-app.get('/',async(req,res)=> {
-  res.json("Api's are working!");
+app.get("/", async (req, res) => {
+  res.json({ message: "API's are working!" });
 })
 
 
