@@ -29,7 +29,7 @@ const Calendar = () => {
       const day = String(selectedDate.getDate()).padStart(2, '0');
       const formattedDate = `${year}-${month}-${day}`;
       console.log(formattedDate);
-      const response = await axios.get(`https://astrologer-portfolio-server.vercel.app/api/slots?date=${formattedDate}`);
+      const response = await axios.get(`https://astrologer-portfolio.vercel.app/api/slots?date=${formattedDate}`);
       setSlots(response.data);
       console.log(slots);
     } catch (error) {
