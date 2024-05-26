@@ -25,7 +25,6 @@ function App() {
               <Route path='/login'  element={<Login />} />
               <Route path='/adminpage' element={isLoggedIn === 'true'? <Admin />:<Login />} />
               <Route path='/contactform' element={isLoggedIn === 'true'? <ContactForm />:<Login />} />
-              
             </Routes>
           </Router>
      
