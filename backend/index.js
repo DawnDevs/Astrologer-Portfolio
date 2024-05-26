@@ -39,6 +39,10 @@ const slotSchema = new mongoose.Schema({
 
 const Slot = mongoose.model('Slot', slotSchema);
 
+app.get('/',async(req,res)=> {
+  res.json("Api's are working!");
+})
+
 
 app.post('/api/register', async (req, res) => {
   const { username, password } = req.body;
