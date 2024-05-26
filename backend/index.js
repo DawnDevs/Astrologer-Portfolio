@@ -11,12 +11,15 @@ const app = express();
 app.use(bodyParser.json());
 
 const corsOptions = {
-  origin: ['https://astrologer-portfolio-client.vercel.app/'],
+  origin: ['https://astrologer-portfolio-client.vercel.app'],
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,
   optionsSuccessStatus: 204,
 };
+
 app.use(cors(corsOptions));
+app.use(bodyParser.json());
+
 
 mongoose
   .connect(process.env.MONGODB)
