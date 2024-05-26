@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { format } from 'date-fns';
-import axios from 'axios';
 
 const Calendar = () => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -29,9 +28,14 @@ const Calendar = () => {
       const day = String(selectedDate.getDate()).padStart(2, '0');
       const formattedDate = `${year}-${month}-${day}`;
       console.log(formattedDate);
-      const response = await axios.get(`https://astrologer-portfolio.vercel.app/api/slots?date=${formattedDate}`);
-      setSlots(response.data);
-      console.log(slots);
+
+      const response = await fetch(`https://astrologer-portfolio.vercel.app/api/slots?date=${formattedDate}`);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      setSlots(data);
+      console.log(data);
     } catch (error) {
       console.error('Error fetching slots:', error);
     }
