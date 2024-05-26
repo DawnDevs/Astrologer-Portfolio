@@ -11,16 +11,15 @@ const app = express();
 app.use(bodyParser.json());
 
 const corsOptions = {
-  origin: ['https://astrologer-portfolio-client.vercel.app'],
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  origin: 'https://astrologer-portfolio-client.vercel.app',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
   optionsSuccessStatus: 204,
 };
 
-app.use(cors(corsOptions));
-app.use(bodyParser.json());
+app.use(cors(corsOptions)); // Apply CORS middleware globally
 
-
+// Connect to MongoDB
 mongoose
   .connect(process.env.MONGODB)
   .then(() => {
@@ -39,20 +38,20 @@ const User = mongoose.model('User', userSchema);
 const slotSchema = new mongoose.Schema({
   date: Date,
   starttime: String,
-  endtime: String,  
+  endtime: String,
   mode: String,
   isBooked: {
     type: Boolean,
     default: false
   }
 });
-
 const Slot = mongoose.model('Slot', slotSchema);
+
+app.options('*', cors(corsOptions)); // Enable preflight across the board
 
 app.get("/", async (req, res) => {
   res.json({ message: "API's are working!" });
-})
-
+});
 
 app.post('/api/register', async (req, res) => {
   const { username, password } = req.body;
@@ -103,7 +102,7 @@ app.post('/api/slots', async (req, res) => {
     // Create a new slot if no existing slot is found
     const newSlot = new Slot({
       date,
-      starttime, 
+      starttime,
       endtime,
       mode
     });
@@ -126,7 +125,6 @@ app.get('/api/slots', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
-
 
 app.put('/api/slots/book/:slotId', async (req, res) => {
   const { slotId } = req.params;
@@ -151,7 +149,6 @@ app.put('/api/slots/book/:slotId', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
-
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
