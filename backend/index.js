@@ -11,9 +11,9 @@ const app = express();
 app.use(bodyParser.json());
 
 const corsOptions = {
-  origin: ['https://astrologer-portfolio-client.vercel.app'],
+  origin: ['https://astrologer-portfolio-client.vercel.app/'],
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  credentials: true, // enable set cookie
+  credentials: true,
   optionsSuccessStatus: 204,
 };
 app.use(cors(corsOptions));
