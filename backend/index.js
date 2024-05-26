@@ -9,7 +9,13 @@ const port = process.env.PORT || 5000;
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors("https://astrologer-portfolio-client.vercel.app/"));
+const corsOptions = {
+  origin: ['https://astrologer-portfolio-client.vercel.app'],
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true, // enable set cookie
+  optionsSuccessStatus: 204,
+};
+app.use(cors(corsOptions));
 
 mongoose
   .connect(process.env.MONGODB, { useNewUrlParser: true, useUnifiedTopology: true })
