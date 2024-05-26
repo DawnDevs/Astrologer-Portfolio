@@ -31,16 +31,19 @@ const Calendar = () => {
       console.log(formattedDate);
       const response = await axios.get(`http://localhost:5000/api/slots?date=${formattedDate}`);
       setSlots(response.data);
+      console.log(slots);
     } catch (error) {
       console.error('Error fetching slots:', error);
     }
   };
 
   const handleBookSlot = (slot) => {
+    const timeRange = `${slot.starttime} - ${slot.endtime}`;
     const queryParams = new URLSearchParams({
       date: format(selectedDate, 'yyyy-MM-dd'),
-      time: slot.time,
+      time: timeRange,
       mode: slot.mode,
+      slotId: slot._id
     }).toString();
     window.open(`/contactform?${queryParams}`, '_blank');
   };
@@ -66,7 +69,7 @@ const Calendar = () => {
         <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {slots.map((slot, index) => (
             <li key={index} className="bg-white p-4 shadow rounded-lg">
-              <div>Time: {slot.time}</div>
+              <div>Time: {`${slot.starttime} - ${slot.endtime}`}</div>
               <div>Mode: {slot.mode}</div>
               <div>
                 {slot.isBooked ? (
