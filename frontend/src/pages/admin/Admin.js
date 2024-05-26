@@ -1,10 +1,12 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 const Admin = () => {
   const [date, setDate] = useState('');
+
   const [starttime, setStartTime] = useState(''); // Update variable names to match backend schema
   const [endtime, setEndTime] = useState(''); // Update variable names to match backend schema
+
   const [mode, setMode] = useState('');
 
   const handleSubmit = async (e) => {
@@ -22,9 +24,11 @@ const Admin = () => {
   };
 
   return (
+
     <div>
         <div>
             Admin
+
         </div>
         <form onSubmit={handleSubmit}>
           <h2 className="text-xl font-semibold text-gray-600 mb-4">Add Slot</h2>
@@ -39,6 +43,7 @@ const Admin = () => {
             />
           </div>
           <div className="mb-4">
+
             <label className="block text-gray-600 mb-1">Start Time:</label>
             <input
               type="time"
@@ -54,6 +59,7 @@ const Admin = () => {
               type="time"
               value={endtime} // Update variable name to match backend schema
               onChange={(e) => setEndTime(e.target.value)}
+
               required
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-amber-500"
             />
@@ -79,7 +85,9 @@ const Admin = () => {
           </button>
         </form>
       </div>
+
   )
+
 }
 
-export default Admin
+export default Admin;

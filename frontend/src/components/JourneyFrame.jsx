@@ -43,7 +43,7 @@ const JourneyFrame = () => {
           className={`mb-8 flex flex-col-reverse md:flex-row ${item.side === 'right' ? 'md:flex-row-reverse' : ''} items-center w-full relative`}
         >
           <div className="w-full md:w-1/2 p-4">
-            <div className="bg-white border border-orange-500 rounded-md p-4 shadow-md">
+            <div className="bg-orange-50 border border-orange-500 rounded-md p-4 shadow-md">
               <h3 className="font-bold">{item.title}</h3>
               <p>{item.text}</p>
             </div>

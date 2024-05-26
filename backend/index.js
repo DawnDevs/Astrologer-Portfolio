@@ -5,12 +5,14 @@ const cors = require('cors');
 const bcrypt = require('bcrypt');
 require('dotenv').config();
 
+const port = process.env.PORT || 5000;
+
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
 mongoose
-  .connect(process.env.MONGODB)
+  .connect(process.env.MONGODB, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log("Connected to MongoDB");
   })
@@ -19,7 +21,7 @@ mongoose
   });
 
 const userSchema = new mongoose.Schema({
-  admin: String,
+  username: String,
   password: String
 });
 const User = mongoose.model('User', userSchema);
@@ -37,12 +39,13 @@ const slotSchema = new mongoose.Schema({
 
 const Slot = mongoose.model('Slot', slotSchema);
 
+
 app.post('/api/register', async (req, res) => {
-  const { admin, password } = req.body;
+  const { username, password } = req.body;
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new User({
-      admin,
+      username,
       password: hashedPassword
     });
     await newUser.save();
@@ -54,13 +57,13 @@ app.post('/api/register', async (req, res) => {
 });
 
 app.post('/api/login', async (req, res) => {
-  const { admin, password } = req.body;
+  const { username, password } = req.body;
   try {
-    const user = await User.findOne({admin});
+    const user = await User.findOne({ username });
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
-    const isPasswordValid = bcrypt.compare(password, user.password);
+    const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
       return res.status(401).json({ message: 'Invalid password' });
     }
@@ -110,6 +113,7 @@ app.get('/api/slots', async (req, res) => {
   }
 });
 
+
 app.put('/api/slots/book/:slotId', async (req, res) => {
   const { slotId } = req.params;
 
@@ -133,6 +137,7 @@ app.put('/api/slots/book/:slotId', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
+
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
