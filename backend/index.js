@@ -1,3 +1,5 @@
+
+
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -10,6 +12,7 @@ const port = process.env.PORT || 5000;
 const app = express();
 app.use(bodyParser.json());
 
+
 // const corsOptions = {
 //   origin: 'https://astrologer-portfolio-client.vercel.app/',
 //   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
@@ -17,11 +20,10 @@ app.use(bodyParser.json());
 //   optionsSuccessStatus: 204,
 // };
 
-app.use(cors()); // Apply CORS middleware globally
+app.use(cors());
 
-// Connect to MongoDB
 mongoose
-  .connect(process.env.MONGODB)
+  .connect(process.env.MONGODB, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log("Connected to MongoDB");
   })
@@ -37,21 +39,17 @@ const User = mongoose.model('User', userSchema);
 
 const slotSchema = new mongoose.Schema({
   date: Date,
-  starttime: String,
-  endtime: String,
+  starttime: String,  // Ensure field name matches
+  endtime: String,    // Ensure field name matches
   mode: String,
   isBooked: {
     type: Boolean,
     default: false
   }
 });
+
 const Slot = mongoose.model('Slot', slotSchema);
 
-app.options('*', cors(corsOptions)); // Enable preflight across the board
-
-app.get("/", async (req, res) => {
-  res.json({ message: "API's are working!" });
-});
 
 app.post('/api/register', async (req, res) => {
   const { username, password } = req.body;
@@ -102,7 +100,7 @@ app.post('/api/slots', async (req, res) => {
     // Create a new slot if no existing slot is found
     const newSlot = new Slot({
       date,
-      starttime,
+      starttime, 
       endtime,
       mode
     });
@@ -125,6 +123,7 @@ app.get('/api/slots', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
+
 
 app.put('/api/slots/book/:slotId', async (req, res) => {
   const { slotId } = req.params;
@@ -149,6 +148,7 @@ app.put('/api/slots/book/:slotId', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
+
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
