@@ -79,7 +79,6 @@ const Admin = () => {
           </button>
         </form>
       </div>
-    </div>
   )
 }
 
