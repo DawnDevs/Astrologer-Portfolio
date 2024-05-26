@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 const ContactForm = () => {
@@ -7,6 +7,11 @@ const ContactForm = () => {
   const date = queryParams.get('date');
   const time = queryParams.get('time');
   const mode = queryParams.get('mode');
+  const slotId = queryParams.get('slotId');
+
+  useEffect(() => {
+    localStorage.setItem('slotId', slotId);
+  }, []);
 
   // Ensure mode is URL encoded
   const encodedMode = encodeURIComponent(mode);
