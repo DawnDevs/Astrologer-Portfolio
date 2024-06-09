@@ -6,7 +6,7 @@ const Footer = () => {
       <div>
         <div className="md:flex justify-between md:mx-40 py-10">
           <h1 className="text-3xl text-white mx-10 md:mx-0 py-5 md:py-0">
-            Astronautica
+            Astro Sri
           </h1>
           <div className="md:flex mx-10 md:mx-0 gap-8 bg-white p-4 rounded-3xl">
             <h1 className="font-semibold text-lg">

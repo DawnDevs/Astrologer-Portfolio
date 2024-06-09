@@ -16,7 +16,7 @@ const LandingPage = () => {
             CONSULT WITH ASTROLOGER
           </h1>
           <h1 className="text-xl md:text-2xl lg:text-4xl mb-2 md:mb-5 font-bold text-amber-500">
-            GET 100% CASHBACK ON
+            GET 50% CASHBACK ON
           </h1>
           <h1 className='text-xl md:text-2xl lg:text-4xl font-bold mb-2 md:mb-4'>
             YOUR FIRST SESSION.

@@ -19,7 +19,7 @@ const Navbar = () => {
       <div className="relative flex justify-between px-5 md:px-10">
         <div className="flex ">
           <img className="absolute" src={Moon} height={50} width={100} alt="moon" />
-          <h1 className="text-amber-500  ml-4  mt-8 md:mt-6 text-3xl md:text-4xl font-bold">Astronautica</h1>
+          <h1 className="text-amber-500  ml-4  mt-8 md:mt-6 text-3xl md:text-4xl font-bold">Astro Sri</h1>
         </div>
         <div className="flex mt-8 md:hidden">
           <button
