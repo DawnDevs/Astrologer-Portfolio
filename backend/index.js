@@ -1,3 +1,5 @@
+
+
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -7,14 +9,18 @@ require('dotenv').config();
 
 const port = process.env.PORT || 5000;
 
+
 const app = express();
 app.use(bodyParser.json());
-app.use(cors());
-app.use(bodyParser.json());
+const corsOptions = {
+  origin: 'https://astrologer-portfolio-client.vercel.app/',
+  methods: 'GET,POST',
+};
 
+app.use(cors());
 
 mongoose
-  .connect(process.env.MONGODB)
+  .connect(process.env.MONGODB, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log("Connected to MongoDB");
   })
@@ -30,8 +36,8 @@ const User = mongoose.model('User', userSchema);
 
 const slotSchema = new mongoose.Schema({
   date: Date,
-  starttime: String,
-  endtime: String,  
+  starttime: String,  // Ensure field name matches
+  endtime: String,    // Ensure field name matches
   mode: String,
   isBooked: {
     type: Boolean,
@@ -40,10 +46,6 @@ const slotSchema = new mongoose.Schema({
 });
 
 const Slot = mongoose.model('Slot', slotSchema);
-
-app.get("/", async (req, res) => {
-  res.json({ message: "API's are working!" });
-})
 
 
 app.post('/api/register', async (req, res) => {

@@ -18,8 +18,11 @@ const Login = () => {
     try {
       const response = await fetch("http://localhost:5000/api/login", {
         method: "POST",
+        mode: 'no-cors',
         headers: {
           "Content-Type": "application/json",
+          Accept: "application/json",
+          "Access-Control-Allow-Origin": "*"
         },
         body: JSON.stringify({ username, password }),
       });
