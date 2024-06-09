@@ -12,14 +12,9 @@ const port = process.env.PORT || 5000;
 
 const app = express();
 app.use(bodyParser.json());
-
-
 const corsOptions = {
   origin: 'https://astrologer-portfolio-client.vercel.app/',
   methods: 'GET,POST',
-  
-
-  
 };
 
 app.use(cors());

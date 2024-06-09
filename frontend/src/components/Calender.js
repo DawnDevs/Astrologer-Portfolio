@@ -29,7 +29,7 @@ const Calendar = () => {
       const formattedDate = `${year}-${month}-${day}`;
       console.log(formattedDate);
 
-      const response = await fetch(`https://astrologer-portfolio.vercel.app/api/slots?date=${formattedDate}`);
+      const response = await fetch(`http://localhost:5000/api/slots?date=${formattedDate}`);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }

@@ -4,8 +4,8 @@ import React, { useState } from 'react';
 const Admin = () => {
   const [date, setDate] = useState('');
 
-  const [starttime, setStartTime] = useState(''); // Update variable names to match backend schema
-  const [endtime, setEndTime] = useState(''); // Update variable names to match backend schema
+  const [starttime, setStartTime] = useState(''); 
+  const [endtime, setEndTime] = useState('');
 
   const [mode, setMode] = useState('');
 
@@ -13,7 +13,7 @@ const Admin = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.post('https://astrologer-portfolio.vercel.app/api/slots', 
+      const response = await axios.post('http://localhost:5000/api/slots', 
         { date, starttime, endtime, mode },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -28,7 +28,6 @@ const Admin = () => {
     <div>
         <div>
             Admin
-
         </div>
         <form onSubmit={handleSubmit}>
           <h2 className="text-xl font-semibold text-gray-600 mb-4">Add Slot</h2>
